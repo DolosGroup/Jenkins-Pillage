@@ -33,7 +33,7 @@ optional arguments:
 ## Usage
 Easy mode:
 ```
-$./jenkins-pillage.py -a https://jenkins.example.com
+$ ./jenkins-pillage.py -a https://jenkins.example.com
 Getting a list of all build URLs
 https://jenkins.example.com/job/Application0/4
 https://jenkins.example.com/job/Application1/6
@@ -47,7 +47,7 @@ Attempting: https://jenkins.example.com/job/Application1/6
 
 List all build URLs recursed from a top level URL:
 ```
-./jenkins-pillage.py -l https://jenkins.example.com
+$ ./jenkins-pillage.py -l https://jenkins.example.com
 https://jenkins.example.com/job/Application0/4
 https://jenkins.example.com/job/Application1/6
 ...
@@ -55,7 +55,7 @@ https://jenkins.example.com/job/Application1/6
 
 Pull the console output, workspace zip url, and environment variables of a build recursed from above:
 ```
-./jenkins-pillage.py -b https://jenkins.example.com/job/Application0/4
+$ ./jenkins-pillage.py -b https://jenkins.example.com/job/Application0/4
 Attempting: https://jenkins.example.com/job/Application0/4
 -- FOUND CONSOLE OUTPUT
 -- FOUND ENV VARS
@@ -63,8 +63,8 @@ Attempting: https://jenkins.example.com/job/Application0/4
 ```
 Same but behind an SSH proxy and needs creds to work:
 ```
-export all_proxy=socks4a://localhost:1080
-./jenkins-pillage.py -b https://jenkins.example.com/job/Application0/4 -u admin -p Password1
+$ export all_proxy=socks4a://localhost:1080
+$ ./jenkins-pillage.py -b https://jenkins.example.com/job/Application0/4 -u admin -p Password1
 Attempting: https://jenkins.example.com/job/Application0/4
 -- FOUND CONSOLE OUTPUT
 -- FOUND ENV VARS
