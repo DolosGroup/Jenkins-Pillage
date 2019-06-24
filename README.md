@@ -1,7 +1,7 @@
-# JenkinsPillage
+# Jenkins-Pillage
 This tool will attempt to pull console output, environment variables, and workspaces associated with Jenkins builds. It works both against unauthenticated and authenticated (with creds) servers. 
 
-Typically lots of sensitive information may be retrieveable from these locations and this tool aims to automate the pillaging of that info. Credentials, API endpoints, private keys, and much more have been gathered using JenkinsPillage. 
+Typically lots of sensitive information may be retrieveable from these locations and this tool aims to automate the pillaging of that info. Credentials, API endpoints, private keys, and much more have been gathered using Jenkins-Pillage. 
 
 ## Requirements
  - Python3
