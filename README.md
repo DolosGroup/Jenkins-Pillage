@@ -33,7 +33,7 @@ optional arguments:
 ## Usage
 Easy mode:
 ```
-./jenkins-pillage.py -a https://jenkins.example.com
+$./jenkins-pillage.py -a https://jenkins.example.com
 Getting a list of all build URLs
 https://jenkins.example.com/job/Application0/4
 https://jenkins.example.com/job/Application1/6
@@ -70,7 +70,10 @@ Attempting: https://jenkins.example.com/job/Application0/4
 -- FOUND ENV VARS
 -- FOUND WORKSPACE ZIP URL
 ```
-The files are pulled down to the current directory. The URL for the zip download is placed in a file as opposed to downloading the zip because many of the zips I've seen can easily fill up your hard drive. 
+The files are pulled down to the current directory. The URL for the zip download is placed in a file as opposed to downloading the zip because many of the zips I've seen can easily fill up your hard drive. Once the files are downloaded, grep to your hearts delight:
+```
+$egrep -i 'password|Authorization.*Basic|sqlplus|<other_creds_or_commands>' *
+```
 
 ## Caveat
 Jenkins has a _lot_ of available plugins that could also house sensitive data. Use this tool as a first step in pillaging Jenkins boxes. This tool is not a substitute for manual review and is considered in beta so YMMV. Pull requests for additional features are welcome.
