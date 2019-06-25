@@ -1,12 +1,17 @@
 # Jenkins-Pillage
-This tool will attempt to pull console output, environment variables, and workspaces associated with Jenkins builds. It works both against unauthenticated and authenticated (with creds) servers. 
+This tool will attempt to pull console output, environment variables, and workspaces associated with Jenkins builds. It works both against unauthenticated and authenticated (with creds) servers.
 
-Typically lots of sensitive information may be retrieveable from these locations and this tool aims to automate the pillaging of that info. Credentials, API endpoints, private keys, and much more have been gathered using Jenkins-Pillage. 
+Typically lots of sensitive information may be retrieveable from these locations and this tool aims to automate the pillaging of that info. Credentials, API endpoints, private keys, and much more have been gathered using Jenkins-Pillage.
 
 ## Requirements
- - Python3
- - pip3 install requests
- - pip3 install bs4
+ - Python3.6 or greater
+
+ - `pip3 install requests`
+ - `pip3 install bs4`
+
+ **OR**
+ - `pip3 install pipenv`
+ - `pipenv install`
 
 ## Help Info
 ```
@@ -29,10 +34,42 @@ optional arguments:
   -a AUTO, --auto AUTO  Automatically perform -l and then -b on a root URL
   -f, --force           Force the URLs to use the supplied socket (in case the
                         server returns localhost)
+
+$ pipenv run start -h
 ```
+
 ## Usage
+Docker mode:
+```bash
+$ cd /path/to/Jenkins-Pillage
+$ docker build -t jenkins-pillage .
+$ docker run --rm -it jenkins-pillage -h
+    usage: jenkins-pillage.py [-h] [-b BUILD_URL] [-u USERNAME] [-p PASSWORD]
+                            [-l LIST_URL] [-a AUTO] [-f]
+
+    Pillage sensitive information from Jenkins servers
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    -b BUILD_URL, --buildurl BUILD_URL
+                            The build URL to pillage
+    -u USERNAME, --user USERNAME
+                            The Basic Auth username for the service
+    -p PASSWORD, --password PASSWORD
+                            The Basic Auth password for the service
+    -l LIST_URL, --list LIST_URL
+                            Lists all found build URLs to use with -b
+    -a AUTO, --auto AUTO  Automatically perform -l and then -b on a root URL
+    -f, --force           Force the URLs to use the supplied socket (in case the
+                            server returns localhost)
+
+# Pass any arguments to the Docker container
+$ docker run --rm -it jenkins-pillage -a https://jenkins.example.com
+```
+
 Easy mode:
 ```
+$ pip
 $ ./jenkins-pillage.py -a https://jenkins.example.com
 Getting a list of all build URLs
 https://jenkins.example.com/job/Application0/4
@@ -42,6 +79,8 @@ Attempting: https://jenkins.example.com/job/Application0/4
 Attempting: https://jenkins.example.com/job/Application1/6
 -- FOUND CONSOLE OUTPUT
 -- FOUND ENV VARS
+Checking to see if credentials can be decrypted and enumerated
+-- FOUND CREDENTIALS IN CREDENTIAL STORE
 ...
 ```
 
