@@ -138,7 +138,8 @@ def main():
         build_links = get_all_build_links(args.auto, auth=auth, netloc_force=args.force)
         with Pool(processes=int(cpu_count() - 1) or 1) as pool:
             pool.starmap(goodies, [(link, auth) for link in build_links])
-        decrypt_all_secrets(JenkinsConnection(args.auto, auth=auth))
+
+        decrypt_all_secrets(JenkinsConnection(f"{args.auto}/", auth=auth))
 
     if args.list_url:
         build_links = get_all_build_links(
