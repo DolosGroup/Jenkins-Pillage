@@ -59,10 +59,10 @@ class JenkinsConnection:
 
     def execute_script(self, script):
         """
-        Open Groovy script and send to
+        Open Groovy script and send to script console, executed
+        if we have rights to do so
         """
 
-        print("Checking to see if credentials can be decrypted and enumerated")
         with open(script) as filename:
             code = filename.read()
             response = self._api_post(

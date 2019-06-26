@@ -40,7 +40,7 @@ $ pipenv run start -h
 
 ## Usage
 Docker mode:
-```bash
+```
 $ cd /path/to/Jenkins-Pillage
 $ docker build -t jenkins-pillage .
 $ docker run --rm -it jenkins-pillage -h
